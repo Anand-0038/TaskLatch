@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <title>TaskLatch — Pay only for work that passes</title>
+  <style>
+    :root{font-family:Inter,"Segoe UI",Arial,sans-serif;color:#18332d;background:#f5f7f4;font-size:16px}
+    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0}a{color:inherit;text-underline-offset:3px}button{font:inherit}
+    .shell{max-width:1240px;margin:auto;padding:0 34px 70px}.top{height:78px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #dce5dd}
+    .brand{font-weight:850;font-size:27px;letter-spacing:-.07em;color:#102c25}.brand i{font-style:normal;color:#11a570}
+    .nav{display:flex;align-items:center;gap:22px;font-size:13px;font-weight:700;color:#59766a}.nav a{text-decoration:none}.nav a:hover{color:#0a8058}.top-label{background:#e1f3e9;color:#0d6648;border:1px solid #b4dec5;padding:8px 12px;border-radius:100px;letter-spacing:.04em;font-size:11px;font-weight:800}
+    .eyebrow{font-size:12px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:#16825d}.heading{display:grid;grid-template-columns:1.4fr .6fr;gap:30px;align-items:end;padding:42px 0 30px}
+    h1{font-size:48px;line-height:1.06;letter-spacing:-.055em;margin:8px 0 12px;max-width:760px;color:#12352b}.heading p{font-size:17px;color:#64796e;line-height:1.5;margin:0;max-width:800px}
+    .run-meta{justify-self:end;border-left:3px solid #19a875;padding:4px 0 4px 18px;font-size:13px;line-height:1.55;color:#678075}.run-meta strong{display:block;color:#1b4233;font-size:15px}
+    .statusbar{display:grid;grid-template-columns:repeat(4,1fr);border:1px solid #d6e4d8;border-radius:16px;background:#fff;overflow:hidden;margin-bottom:28px;box-shadow:0 3px 16px #15332409}
+    .stat{padding:17px 22px;border-right:1px solid #e2eae3}.stat:last-child{border:0}.stat small{display:block;color:#71887a;font-size:11px;font-weight:800;letter-spacing:.09em;text-transform:uppercase;margin-bottom:4px}.stat strong{font-size:22px;color:#173a2b;letter-spacing:-.04em}.stat .good{color:#0e9b69}.stat .muted{font-size:14px;font-weight:700}
+    .section-head{display:flex;align-items:center;justify-content:space-between;gap:20px;margin:35px 0 15px}.section-head h2{font-size:25px;letter-spacing:-.045em;margin:0;color:#17372d}.section-head span{font-size:12px;font-weight:700;color:#789184}
+    .feature{background:white;border:1px solid #d7e4d9;border-radius:20px;box-shadow:0 10px 32px #1836290c;overflow:hidden}.feature-top{display:grid;grid-template-columns:1fr;gap:24px;padding:28px 30px 23px;background:linear-gradient(115deg,#f9fffa,#eefaf1)}
+    .idline{display:flex;align-items:center;gap:10px;font-size:12px;color:#758d7c;font-weight:800;letter-spacing:.07em;text-transform:uppercase}.dot{width:8px;height:8px;border-radius:50%;background:#13aa70}.feature h3{font-size:35px;letter-spacing:-.055em;margin:12px 0 6px;line-height:1.1;color:#12372a}.official{font-size:14px;color:#327a5d;font-weight:650;word-break:break-word}.official:hover{color:#095e3d}
+    .decision-box{background:#0f3428;color:#fff;border-radius:15px;padding:18px 20px;min-width:230px}.decision-box small{color:#98d6b4;text-transform:uppercase;font-size:11px;letter-spacing:.12em;font-weight:800}.decision-box strong{display:block;font-size:28px;letter-spacing:-.04em;margin:6px 0}.decision-box p{font-size:13px;color:#bde1c9;line-height:1.45;margin:0}.decision-strip{padding:0 30px 24px}.decision-strip .decision-box{width:100%}.feature-body{display:grid;grid-template-columns:1.1fr .9fr;gap:0}
+    .evidence{padding:28px 30px}.block-title{font-size:11px;font-weight:850;color:#769080;text-transform:uppercase;letter-spacing:.11em;margin-bottom:16px}.facts{display:grid;grid-template-columns:1fr 1fr;gap:16px}.fact{padding:16px;border:1px solid #deeadf;border-radius:12px;background:#fbfdfb;min-height:96px}.fact small{display:block;font-size:11px;font-weight:800;color:#76917f;text-transform:uppercase;letter-spacing:.08em;margin-bottom:9px}.fact b{font-size:17px;line-height:1.25;color:#1c3d2e}.fact a{display:block;color:#48846a;font-size:11px;margin-top:7px;text-decoration:none}.fact a:hover{text-decoration:underline}
+    .judgment{border-left:1px solid #e3ece3;padding:28px 30px;display:flex;flex-direction:column}.judgment p{color:#4e6d5a;font-size:14px;line-height:1.55;margin:0 0 18px}.checklist{display:flex;flex-direction:column;gap:9px;margin-top:12px}.check{display:flex;gap:10px;align-items:start;color:#476655;font-size:13px;line-height:1.35}.check-mark{font-size:16px;font-weight:900;color:#0aa567;line-height:1}
+    .settlement{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:20px;background:#10372a;color:#f2fff7;padding:20px 30px}.paid{font-size:27px;letter-spacing:-.04em;font-weight:850;white-space:nowrap}.paid small{display:block;font-size:10px;letter-spacing:.12em;font-weight:800;color:#9acbb0;text-transform:uppercase;margin-bottom:2px}.tx{font-size:12px;color:#b8dfc3;min-width:0}.tx b{display:block;color:#f1fff6;font-size:12px;margin-bottom:4px}.tx code{word-break:break-all;font-family:Consolas,monospace;font-size:11px}.settlement a{background:#e2ffe7;color:#174d32;border-radius:10px;text-decoration:none;padding:12px 15px;font-size:12px;font-weight:850;white-space:nowrap}
+    .other-grid{display:grid;grid-template-columns:1fr 1fr;gap:17px}.other{background:#fff;border:1px solid #dae5db;border-radius:16px;padding:22px;display:grid;grid-template-columns:1fr auto;gap:8px 20px}.other h3{font-size:21px;letter-spacing:-.035em;margin:6px 0 5px;color:#223c31}.other p{font-size:14px;line-height:1.5;color:#5d7566;margin:0;grid-column:1/-1}.other .source{font-size:12px;color:#428265;grid-column:1/-1}.reject-note{grid-column:1/-1;margin:0;color:#678075;font-size:12px;line-height:1.4}.zero{color:#8e514c;background:#fff2ee;border-radius:100px;font-size:12px;font-weight:850;padding:8px 10px;align-self:start;white-space:nowrap}.reason-tag{color:#a24e3c;font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase}
+    .receipt-panel{margin-top:35px;border:1px solid #d9e5da;background:#fff;border-radius:16px;overflow:hidden}.receipt-panel summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;padding:19px 23px;font-weight:800;font-size:16px;color:#183b2d}.receipt-panel summary::-webkit-details-marker{display:none}.receipt-panel summary:after{content:'+';font-size:24px;color:#4d7d62}.receipt-panel[open] summary:after{content:'−'}
+    .receipt-details{display:grid;grid-template-columns:1fr 1fr;gap:14px;padding:0 23px 22px}.receipt-details div{background:#f5f9f5;border-radius:10px;padding:14px}.receipt-details .wide{grid-column:1/-1}.receipt-details small{display:block;color:#6b8671;text-transform:uppercase;letter-spacing:.08em;font-size:10px;font-weight:800;margin-bottom:7px}.receipt-details code{font-size:11px;line-height:1.4;word-break:break-all;color:#295540}.receipt-details p{margin:0;color:#355c43;font-size:13px;line-height:1.45}.receipt-details ul{margin:0;padding-left:19px;font-size:12px;line-height:1.5;color:#355c43}.receipt-details li+li{margin-top:3px}.receipt-details a{color:#337751}.receipt-details .source-meta{margin-top:8px;color:#587564;font-size:11px;line-height:1.5}.receipt-details .firewall-note{border-left:3px solid #15986b;background:#edf8f0;color:#345d44;font-size:12px;line-height:1.45}
+    .source-update{font-size:12px;line-height:1.45;color:#526f60;margin:10px 0 0}.source-update strong{color:#294d38}
+    @media(max-width:850px){.shell{padding:0 18px 50px}.top{height:68px}.nav{gap:10px}.top-label{display:none}.heading,.feature-top,.feature-body{grid-template-columns:1fr}.heading{padding:24px 0 17px}h1{font-size:36px}.run-meta{justify-self:start}.statusbar{grid-template-columns:1fr 1fr}.stat:nth-child(2){border-right:0}.stat:nth-child(-n+2){border-bottom:1px solid #e2eae3}.judgment{border-left:0;border-top:1px solid #e3ece3}.decision-strip{padding:0 20px 20px}.settlement{grid-template-columns:1fr}.other-grid{grid-template-columns:1fr}.receipt-details{grid-template-columns:1fr}}
+    @media(max-width:600px){.heading{gap:12px;padding:19px 0 16px}.heading p{font-size:14px;line-height:1.4}.run-meta{font-size:11px;line-height:1.3;padding-left:10px}.run-meta strong{font-size:12px}.statusbar{grid-template-columns:1fr 1fr;margin-bottom:18px}.stat{padding:11px 13px}.stat:nth-child(-n+2){border-bottom:0}.stat:nth-child(n+3){display:none}.stat strong{font-size:19px}.section-head{margin:22px 0 11px}.section-head h2{font-size:23px}.section-head span{display:none}.facts{grid-template-columns:1fr}.feature-top,.evidence,.judgment{padding:20px}.settlement{padding:20px}.nav a:first-child{display:none}}
+  </style>
+  <link rel="stylesheet" href="/operator-run.css">
+  <script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.180.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.180.0/examples/jsm/"}}</script>
+</head>
+<body><main class="shell">
+  <header class="top"><div class="brand">task<i>latch</i></div><nav class="nav" aria-label="Page sections"><a href="#how-it-works">For businesses</a><a href="#recorded-run">Recorded proof</a><span class="top-label">Arc Testnet demo</span></nav></header>
+  <section class="hero" aria-labelledby="hero-title"><div class="hero-copy"><div class="hero-context">Acceptance-based payments for repeatable work</div><h1 id="hero-title">Pay only for work that passes.</h1><p class="hero-lead">Set the rules for a deliverable before it arrives. TaskLatch checks independent evidence and hard limits, then judges the work. Accepted work can release a bounded USDC payment; rejected work earns $0.</p><div class="hero-actions"><a class="hero-primary" href="#how-it-works">See the business workflow <span aria-hidden="true">↘</span></a><a class="hero-secondary" href="#recorded-run">View recorded testnet proof</a></div><p class="hero-note"><strong>Looking for a first business operator</strong>The recorded run below is Anand’s self-use research task, paid with 0.10 test USDC on Arc Testnet. No business customer or production payment is claimed.</p></div><div><div class="gate-fallback" id="hero-fallback" role="status">Reading the saved decision record…</div><div class="gate" id="hero-gate" role="region" aria-label="Recorded acceptance decision" hidden><div class="gate-head"><strong>Acceptance gate</strong><span>Recorded testnet run · no new payment</span></div><div class="gate-picker" role="group" aria-label="Explore recorded decisions" id="gate-picker"></div><div class="gate-result" aria-live="polite"><span class="gate-overline">Selected recorded result</span><strong id="hero-preview-title"></strong><p id="hero-preview-reason"></p></div><ol class="gate-steps"><li><span class="gate-num">01</span><div><strong>Buyer policy</strong><small>Rules set before the result</small></div><span class="gate-step-state">Defined</span></li><li><span class="gate-num">02</span><div><strong>Verify work</strong><small>Independent evidence and hard checks</small></div><span class="gate-step-state" id="hero-preview-checks"></span></li><li><span class="gate-num">03</span><div><strong>Final decision</strong><small>Hard rules cannot be overridden</small></div><span class="gate-step-state" id="hero-preview-ai"></span></li></ol><div class="gate-total-label">Totals across all three recorded results</div><div class="gate-outcomes"><div class="gate-outcome accept"><span>ACCEPT · paid</span><strong id="hero-preview-amount"></strong><small>Confirmed Arc Testnet settlement</small></div><div class="gate-outcome reject"><span>REJECT · unpaid</span><strong id="hero-preview-rejected"></strong><small>Saved results earned $0</small></div></div><div class="gate-footer"><span>Buyer cap <b id="hero-preview-cap"></b> · recorded outcomes</span><a href="#receipt">See the proof</a></div></div></div></section>
+  <section class="proof-illustration" id="proof-illustration" aria-labelledby="illustration-title"><div class="proof-illustration-copy"><span class="eyebrow">The proof gate · illustration</span><h2 id="illustration-title">A boundary AI cannot cross.</h2><p>One verified result can reach the payment path. Two results stop when a required rule fails. The artwork explains the boundary; the recorded decisions and Arc transaction below provide the actual proof.</p><a href="#recorded-run">Inspect the recorded decisions <span aria-hidden="true">↘</span></a><p class="illustration-disclosure">In 3D, selecting a saved result highlights a route. This illustration never evaluates work or sends money.</p></div><figure class="proof-illustration-figure"><div class="proof-visual" id="proof-gate" data-mode="poster" data-result="accepted"><img src="/assets/proof-gate/tasklatch-hero-poster.webp" alt="A verification gate with one emerald route crossing the boundary and two amber routes stopped outside it." width="1600" height="1280" loading="lazy" decoding="async"><canvas aria-hidden="true"></canvas></div><figcaption><span id="load-status" role="status">Static illustration · recorded proof below</span><span class="proof-motion"><button id="load-3d" type="button">View 3D</button><button id="motion-toggle" type="button" disabled>Pause motion</button><button id="replay" type="button" disabled>Replay</button></span></figcaption></figure></section>
+  <section class="business" id="how-it-works" aria-labelledby="business-title"><div class="business-intro"><span class="eyebrow">For a business buyer</span><h2 id="business-title">Turn acceptance rules into a payment boundary.</h2><p>Start with one task the business already pays for per accepted result. The buyer specifies what evidence counts, what fails automatically, and the maximum spend. A human approves those rules before work starts.</p></div><ol class="business-steps"><li><span>01 / DEFINE</span><strong>Set the deliverable</strong><p>For example, a qualified research result with a source, required fields, and a fixed price.</p></li><li><span>02 / CHECK</span><strong>Verify before judging</strong><p>Independent evidence and hard rules set the payment boundary. A failed rule blocks payment, even if AI approves.</p></li><li><span>03 / SETTLE</span><strong>Pay the accepted unit</strong><p>Only an accepted result can enter the bounded settlement path. Rejected results receive $0.</p></li></ol><p class="business-disclaimer">Proposed buyer workflow. The recorded proof below uses a personal research task; business onboarding and live customer use remain unverified.</p></section>
+  <div class="section-head" id="recorded-run"><h2>Recorded self-use proof</h2><span id="request"></span></div>
+  <div class="statusbar"><div class="stat"><small>Accepted</small><strong class="good" id="accepted">—</strong></div><div class="stat"><small>Unpaid outcomes</small><strong id="rejected">—</strong></div><div class="stat"><small>Paid</small><strong id="paid-total">—</strong></div><div class="stat"><small>Buyer-authorized cap</small><strong class="muted" id="cap">—</strong></div></div>
+  <div class="section-head" id="results"><h2>Accepted result</h2><span>Official evidence → hard checks → AI judgment → payment</span></div>
+  <article class="feature" id="accepted-card"></article>
+  <div class="section-head"><h2>Results that earned $0</h2><span>Hard failures always block payment</span></div>
+  <section class="other-grid" id="other-results"></section>
+  <details class="receipt-panel" id="receipt"><summary>Inspect the TaskLatch decision proof</summary><div class="receipt-details" id="receipt-details"></div></details>
+</main>
+<script>
+const e=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const safeHttpsUrl=value=>{try{const url=new URL(value,location.href);return url.protocol==='https:'?url.href:null}catch{return null}};
+const sourceLink=(url,label)=>{const href=safeHttpsUrl(url);return href?`<a href="${e(href)}" target="_blank" rel="noopener">${e(label)} ↗</a>`:`<span>${e(label)} unavailable</span>`};
+document.querySelectorAll('a[href="#receipt"]').forEach(link=>link.addEventListener('click',()=>{document.getElementById('receipt').open=true}));
+Promise.all([
+  fetch('/operator-run.json').then(r=>{if(!r.ok)throw Error('Decision record unavailable');return r.json()}),
+  fetch('/operator-run-source-updates.json').then(r=>r.ok?r.json():{updates:[]}).catch(()=>({updates:[]})),
+]).then(([data,sourceUpdateData])=>{
+  if(!Array.isArray(data?.results)||!Array.isArray(data?.operatorRequest?.criteria))throw Error('Saved operator record is incomplete; no decision was changed.');
+  const accepted=data.results.filter(r=>r?.decision==='ACCEPT');
+  if(accepted.length!==1||data.results.some(r=>!['ACCEPT','REJECT','ESCALATE'].includes(r?.decision)))throw Error('Saved operator decisions are incomplete or inconsistent; refusing to imply a payout.');
+  const yes=accepted[0];
+  const no=data.results.filter(r=>r.decision!=='ACCEPT');
+  if(data.results.some(r=>!r.id||!r.title||!Array.isArray(r.hardChecks?.checks)||!r.hardChecks.checks.every(c=>typeof c.label==='string'&&typeof c.pass==='boolean')||!r.reason||!r.payment))throw Error('A saved decision is incomplete; refusing to replay it.');
+  if(yes.hardChecks?.status!=='PASS'||!Array.isArray(yes.hardChecks.checks)||!yes.hardChecks.checks.every(c=>c.pass===true)||yes.aiJudgment?.decision!=='ACCEPT'||!Number.isFinite(yes.aiJudgment.confidence)||yes.aiJudgment.confidence<0||yes.aiJudgment.confidence>1)throw Error('The saved ACCEPT lacks passing hard checks or a valid AI judgment; refusing to imply a payout.');
+  if(yes.signatureValid!==true||yes.payment?.status!=='CONFIRMED ARC TESTNET USDC'||yes.payment?.amount!==data.job?.unitPrice||!/^0x[0-9a-f]{64}$/i.test(yes.payment?.txHash||'')||!/^0x[0-9a-f]{64}$/i.test(yes.receiptHash||''))throw Error('The saved ACCEPT is missing verified provider, payment, or receipt proof.');
+  if(!Array.isArray(yes.aiJudgment.evidence)||!yes.aiJudgment.evidence.some(item=>item?.supports===true&&safeHttpsUrl(item.source)))throw Error('The saved ACCEPT has no source-cited supporting AI evidence.');
+  if(!Array.isArray(yes.hardChecks.citations)||!safeHttpsUrl(yes.url)||!Array.isArray(yes.independentEvidence?.sources)||!yes.independentEvidence.sources.some(s=>safeHttpsUrl(s?.url)&&/^([a-f0-9]{64})$/i.test(s.pageSha256||'')))throw Error('The saved ACCEPT has no independently fetched, hashed HTTPS source.');
+  if(no.some(r=>Number(r.payment?.amount)!==0||r.payment?.txHash||r.payment?.status!=='NO PAYMENT'||!/^0x[0-9a-f]{64}$/i.test(r.receiptHash||'')||!Array.isArray(r.hardChecks?.citations)||!Array.isArray(r.independentEvidence?.sources)||!r.independentEvidence.sources.some(s=>safeHttpsUrl(s?.url)&&/^[a-f0-9]{64}$/i.test(s.pageSha256||''))||!r.aiJudgment||(r.aiJudgment.status!=='SKIPPED'&&!r.aiJudgment.decision)))throw Error('A saved unpaid decision lacks its no-payment or evidence proof.');
+  const picker=document.getElementById('gate-picker');
+  let gateViewer=null;
+  let renderSelectedProof=()=>{};
+  const savedResults=new Map(data.results.map(result=>[result.id,result]));
+  const resultFromUrl=()=>savedResults.get(new URL(location.href).searchParams.get('result'))||yes;
+  const illustratedRoute=result=>result.id===yes.id?'accepted':result.id===no[0].id?'rejected1':'rejected2';
+  const selectRecordedResult=(result,updateUrl=false)=>{
+    document.getElementById('hero-preview-title').textContent=result.title;
+    const failed=result.hardChecks.checks.filter(check=>check.pass!==true);
+    document.getElementById('hero-preview-reason').textContent=failed.length?`Failed rule: ${failed.map(check=>check.label).join('; ')}. ${result.reason}`:result.aiJudgment.reason;
+    document.getElementById('hero-preview-checks').textContent=failed.length?`${failed.length} failed`:`${result.hardChecks.checks.length} passed`;
+    document.getElementById('hero-preview-ai').textContent=result.hardChecks.status==='REJECT'?'Blocked by policy':result.hardChecks.status==='ESCALATE'?'Human review':result.aiJudgment.decision;
+    picker.querySelectorAll('button').forEach(button=>button.setAttribute('aria-pressed',String(button.dataset.resultId===result.id)));
+    gateViewer?.setResult(illustratedRoute(result));
+    renderSelectedProof(result);
+    if(updateUrl){const url=new URL(location.href);url.searchParams.set('result',result.id);history.pushState(null,'',url);}
+  };
+  for(const result of data.results){
+    const button=document.createElement('button');
+    button.type='button';
+    button.dataset.resultId=result.id;
+    button.textContent=`${result.decision} · ${result.title}`;
+    button.addEventListener('click',()=>selectRecordedResult(result,true));
+    picker.append(button);
+  }
+  selectRecordedResult(resultFromUrl());
+  addEventListener('popstate',()=>selectRecordedResult(resultFromUrl()));
+  document.getElementById('hero-preview-amount').textContent=`${yes.payment.amount} test USDC`;
+  document.getElementById('hero-preview-rejected').textContent=`${no.length} at $0`;
+  document.querySelector('.gate-outcome.reject span').textContent=no.every(r=>r.decision==='REJECT')?'REJECT · unpaid':'Unpaid outcomes';
+  document.getElementById('hero-preview-cap').textContent=`${data.job.cap} test USDC`;
+  document.getElementById('hero-gate').hidden=false;
+  document.getElementById('hero-fallback').hidden=true;
+  const currentSourceUpdate=(sourceUpdateData.updates||[]).find(update=>update.resultId===yes.id&&update.source===yes.url);
+  const snapshotDate=value=>value?new Date(value).toLocaleDateString('en-IN',{timeZone:'UTC',day:'numeric',month:'long',year:'numeric'}):'the saved evaluation';
+  document.getElementById('request').textContent=data.operatorRequest.request;
+  document.getElementById('accepted').textContent=data.results.filter(r=>r.decision==='ACCEPT').length;
+  document.getElementById('rejected').textContent=no.length;
+  document.getElementById('paid-total').textContent=`${yes.payment.amount} test USDC`;
+  document.getElementById('cap').textContent=`${data.job.cap} test USDC`;
+  const claimMap=[
+    ['Verified prize pool',yes.hardChecks.citations.find(c=>/prize pool/i.test(c.claim))],
+    ['Submission deadline · saved snapshot',yes.hardChecks.citations.find(c=>/submission open/i.test(c.claim))],
+    ['India eligibility',yes.hardChecks.citations.find(c=>/students and working/i.test(c.claim))],
+  ];
+  if(claimMap.some(([,citation])=>!citation?.claim||!safeHttpsUrl(citation.source)))throw Error('The saved ACCEPT is missing an official citation for a required operator criterion.');
+  const relevanceCheck=yes.hardChecks.checks.find(c=>c.label==='AI builder relevance verified'&&c.pass===true);
+  if(!relevanceCheck)throw Error('The saved ACCEPT does not include a passing builder-relevance check.');
+  const deadlineCitation=claimMap.find(([label])=>label.startsWith('Submission deadline'))?.[1];
+  const originalSource=yes.independentEvidence?.sources?.find(source=>source.url===yes.url);
+  const historicalDeadlineNote=currentSourceUpdate&&deadlineCitation?`<p class="source-update"><strong>Saved ProofPay snapshot:</strong> fetched ${e(snapshotDate(originalSource?.retrievedAt))}; it recorded “${e(deadlineCitation.claim)}.” <strong>Manual recheck (${e(currentSourceUpdate.checkedDate)}):</strong> the organizer page then listed submissions open through ${e(currentSourceUpdate.currentDeadline)}. This did not change the saved decision or payment.</p>`:'';
+  const facts=claimMap.map(([label,c])=>`<div class="fact"><small>${e(label)}</small><b>${e(c.claim)}</b>${label.startsWith('Submission deadline')?historicalDeadlineNote:''}${sourceLink(c.source,'Organizer source')}</div>`).join('')+`<div class="fact"><small>Builder relevance</small><b>${e(relevanceCheck.label)}</b>${sourceLink(yes.url,'Organizer source')}</div>`;
+  const checkLabels=[
+    ['Official prize pool is at least ₹1 lakh','Prize ≥ ₹1 lakh'],
+    ['Official deadline remains open','Deadline open'],
+    ['India-based student/builder eligibility verified','India eligible'],
+    ['AI builder relevance verified','AI/builders relevant'],
+  ];
+  const checks=checkLabels.filter(([label])=>yes.hardChecks.checks.some(c=>c.label===label&&c.pass)).map(([checkLabel,label])=>`<div class="check"><span class="check-mark">✓</span>${e(label)}${checkLabel==='AI builder relevance verified'?` · ${sourceLink(yes.url,'official source')}`:''}</div>`).join('');
+  document.getElementById('accepted-card').innerHTML=`<div class="feature-top"><div><div class="idline"><span class="dot"></span>Provider-signed result · official source checked</div><h3>${e(yes.title)}</h3><a class="official" href="${e(yes.url)}" target="_blank" rel="noopener">${e(yes.url)} ↗</a></div></div><div class="feature-body"><div class="evidence"><div class="block-title">Independent official evidence</div><div class="facts">${facts}</div></div><div class="judgment"><div class="block-title">Policy Firewall · hard checks</div><p>Every required rule passed before AI judgment. A failed rule forces $0; the AI cannot override it.</p><div class="checklist">${checks}</div></div></div><div class="decision-strip"><div class="decision-box"><small>AI judgment</small><strong>${e(yes.decision)} · ${Math.round(yes.aiJudgment.confidence*100)}%</strong><p>${e(yes.aiJudgment.reason)}</p></div></div><div class="settlement"><div class="paid"><small>Payment confirmed</small>${e(yes.payment.amount)} test USDC</div><div class="tx"><b>Arc Testnet</b><code>${e(yes.payment.txHash)}</code></div>${sourceLink(yes.payment.explorerUrl,'View transaction')}</div>`;
+  document.getElementById('other-results').innerHTML=no.map(r=>{
+    const decisive=r.hardChecks.citations.find(c=>/ended|registration|September/i.test(c.claim))||r.hardChecks.citations[0];
+    return `<article class="other"><div><div class="reason-tag">${e(r.decision)}</div><h3>${e(r.title)}</h3></div><span class="zero">$0 PAID</span><p>${e(r.reason)}</p><div class="source">${sourceLink(decisive?.source||r.url,'Official source')}</div></article>`;
+  }).join('')+`<p class="reject-note">A failed hard rule cannot be overridden by AI judgment.</p>`;
+  const sourceRecords=yes.independentEvidence?.sources||[];
+  const sourceDetails=sourceRecords.map(s=>`<li><b>${sourceLink(s.url,'Open official source')}</b><div class="source-meta">Retrieved ${e(new Date(s.retrievedAt).toLocaleString())} · ${e(s.provider||'Official source')} · page SHA-256: <code>${e(s.pageSha256||'Not recorded')}</code></div></li>`).join('');
+  const aiEvidence=(yes.aiJudgment.evidence||[]).map(item=>`<li>${e(item.claim)} · ${item.supports?'supports':'does not support'} · ${sourceLink(item.source,'source')}</li>`).join('');
+  const acceptedProof=[
+    `<div class="wide"><small>01 · Buyer policy</small><p>${e(data.operatorRequest.request)}</p><ul>${data.operatorRequest.criteria.map(c=>`<li>${e(c)}</li>`).join('')}</ul><div class="source-meta">Job ID: <code>${e(data.runId)}</code></div></div>`,
+    `<div><small>02 · Signed result</small><p><b>${e(yes.title)}</b><br>${sourceLink(yes.url,'Submitted official URL')}</p><div class="source-meta">Result ID: <code>${e(yes.id)}</code></div><div class="source-meta">Provider signature: <b>${yes.signatureValid?'Verified':'Not verified'}</b></div><div class="source-meta">Provider: <code>${e(data.job.provider)}</code></div></div>`,
+    `<div class="wide"><small>03 · Independent evidence retrieval</small>${sourceDetails?`<ul>${sourceDetails}</ul>`:'<p>No source retrieval metadata recorded.</p>'}<div class="source-meta">Claims checked against the fetched official page:</div><ul>${yes.hardChecks.citations.map(c=>`<li>${e(c.claim)} · ${sourceLink(c.source,'source')}</li>`).join('')}</ul>${historicalDeadlineNote}</div>`,
+    `<div class="wide"><small>04 · Policy Firewall · deterministic checks</small><ul>${yes.hardChecks.checks.map(c=>`<li>${c.pass?'PASS':'FAIL'} · ${e(c.label)}</li>`).join('')}</ul><p class="firewall-note">A failed hard check blocks payment. AI judgment cannot change this result.</p></div>`,
+    `<div class="wide"><small>05 · AI judgment · ${Math.round(yes.aiJudgment.confidence*100)}% confidence</small><p><b>${e(yes.aiJudgment.decision)}</b> · ${e(yes.aiJudgment.reason)}</p>${aiEvidence?`<div class="source-meta">Cited evidence</div><ul>${aiEvidence}</ul>`:''}</div>`,
+    `<div><small>06 · Payment authorization</small><p>${e(yes.payment.amount)} test USDC · accepted amount within the ${e(data.job.cap)} test USDC cap</p><div class="source-meta">Provider: <code>${e(data.job.provider)}</code></div></div>`,
+    `<div><small>07 · Arc settlement</small><p>Confirmed on Arc Testnet · ${sourceLink(yes.payment.explorerUrl,'view transaction')}</p><div class="source-meta">Contract: <code>${e(data.job.escrow)}</code><br>Provider balance: ${e(yes.payment.balanceBefore)} → ${e(yes.payment.balanceAfter)} test USDC</div><code>${e(yes.payment.txHash)}</code></div>`,
+    `<div class="wide"><small>08 · TaskLatch decision hash</small><code>${e(yes.receiptHash)}</code><div class="source-meta">This decision hash is distinct from the Arc settlement transaction hash. Historical contract and run identifiers retain their original ProofPay names.</div></div>`,
+  ].join('');
+  renderSelectedProof=result=>{
+    const details=document.getElementById('receipt-details');
+    const summary=document.querySelector('#receipt summary');
+    summary.textContent=`Decision proof · ${result.title}`;
+    if(result.id===yes.id){details.innerHTML=acceptedProof;return;}
+    const sources=result.independentEvidence.sources.map(source=>`<li>${sourceLink(source.url,'Official source')}<div class="source-meta">Retrieved ${e(new Date(source.retrievedAt).toLocaleString())} · ${e(source.provider)} · page SHA-256: <code>${e(source.pageSha256)}</code></div></li>`).join('');
+    const citations=result.hardChecks.citations.map(citation=>`<li>${e(citation.claim)} · ${sourceLink(citation.source,'source')}</li>`).join('');
+    const modelEvidence=(result.aiJudgment.evidence||[]).map(item=>`<li>${e(item.claim)} · ${item.supports?'supports':'does not support'} · ${sourceLink(item.source,'source')}</li>`).join('');
+    details.innerHTML=[
+      `<div class="wide"><small>01 · Buyer policy</small><p>${e(data.operatorRequest.request)}</p><ul>${data.operatorRequest.criteria.map(c=>`<li>${e(c)}</li>`).join('')}</ul></div>`,
+      `<div><small>02 · Submitted result</small><p><b>${e(result.title)}</b><br>${sourceLink(result.url,'Submitted source')}</p><div class="source-meta">Result ID: <code>${e(result.id)}</code></div><div class="source-meta">Provider signature: <b>${result.signatureValid?'Verified':'Not verified'}</b></div></div>`,
+      `<div class="wide"><small>03 · Independent evidence</small><ul>${sources}</ul><div class="source-meta">Cited claims</div><ul>${citations}</ul></div>`,
+      `<div class="wide"><small>04 · Hard rules</small><ul>${result.hardChecks.checks.map(check=>`<li>${check.pass?'PASS':'FAIL'} · ${e(check.label)}</li>`).join('')}</ul><p class="firewall-note">${e(result.hardChecks.reason||result.reason)} A failed hard rule blocks payment even if AI suggests otherwise.</p></div>`,
+      `<div class="wide"><small>05 · AI judgment and final decision</small><p>AI: <b>${result.aiJudgment.status==='SKIPPED'?'Not invoked':e(result.aiJudgment.decision)}</b> · Final: <b>${e(result.decision)}</b>. ${e(result.reason)}</p>${modelEvidence?`<ul>${modelEvidence}</ul>`:''}</div>`,
+      `<div><small>06 · Payment outcome</small><p><b>$0 · no payment</b></p><div class="source-meta">No Arc settlement transaction for this result.</div></div>`,
+      `<div><small>07 · Decision receipt hash</small><code>${e(result.receiptHash)}</code><div class="source-meta">This is a decision hash, not an Arc transaction hash.</div></div>`,
+    ].join('');
+  };
+  renderSelectedProof(resultFromUrl());
+  const load3d=document.getElementById('load-3d');
+  load3d.addEventListener('click',()=>{
+    load3d.disabled=true;
+    load3d.textContent='Loading 3D…';
+    import('/assets/proof-gate/proof-gate-viewer.js').then(({mountProofGate})=>{
+      const visual=document.getElementById('proof-gate');
+      visual.addEventListener('proofgate:ready',()=>{load3d.hidden=true;},{once:true});
+      visual.addEventListener('proofgate:fallback',()=>{load3d.hidden=true;},{once:true});
+      gateViewer=mountProofGate(visual,{controls:document.getElementById('proof-illustration'),modelURL:'/assets/proof-gate/tasklatch-proof-gate.glb'});
+      gateViewer.setResult(illustratedRoute(resultFromUrl()));
+    }).catch(()=>{load3d.hidden=true;document.getElementById('load-status').textContent='Static illustration · 3D unavailable';});
+  },{once:true});
+}).catch(error=>{
+  document.getElementById('hero-gate').hidden=true;
+  document.getElementById('hero-fallback').hidden=false;
+  document.getElementById('hero-fallback').textContent=`Saved decision unavailable: ${error.message}`;
+  for(const id of ['request','accepted','rejected','paid-total','cap'])document.getElementById(id).textContent='—';
+  document.getElementById('other-results').replaceChildren();
+  document.getElementById('receipt-details').replaceChildren();
+  document.getElementById('accepted-card').textContent=error.message;
+});
+</script></body></html>

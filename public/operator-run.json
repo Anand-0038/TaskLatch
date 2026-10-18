@@ -1,0 +1,367 @@
+{
+  "runId": "proofpay-opportunities-20260927-01",
+  "operatorRequest": {
+    "operator": "Anand Vashishtha (self-use operator; no third-party validation claimed)",
+    "request": "Find 10 active, high-value AI/Web3 hackathons, grants, or builder programs that I could realistically consider applying to.",
+    "quantity": 10,
+    "criteria": [
+      "Prize pool, grant, bounty, or concrete benefit worth at least ₹1 lakh equivalent.",
+      "Application or submission deadline remains open at evaluation time.",
+      "India-based student or builder is not explicitly ineligible.",
+      "Official source URL verifies prize or benefit, deadline, and eligibility.",
+      "Meaningful AI, Web3, blockchain, agent, developer-tooling, or builder relevance.",
+      "No duplicate, fabricated, expired, purely networking, or unsupported result."
+    ]
+  },
+  "job": {
+    "unitPrice": "0.10",
+    "maxUnits": 10,
+    "cap": "1.00",
+    "buyer": "0x59ffc8907beaA275F29B466BCB1D9BbfeaDAd165",
+    "provider": "0x4D3c59d1673B0D1786ff28893d397b044fE889bb",
+    "agent": "0xFB76C4B6912bCF358752Fb4b4b15B959EfaDD915",
+    "escrow": "0x056612C9f9810b59121f70ae12Bda7c73a8eF040",
+    "chainId": 5042002,
+    "fundingTx": "0xb910dbad55ca43a83c71f1b43016bc66ba41e24a643f4dd52c865df126ae200a",
+    "fundingBlock": 64227127,
+    "expiresAt": "2026-10-11T06:30:14.000Z"
+  },
+  "evaluatedAt": "2026-09-27T06:29:40.361Z",
+  "results": [
+    {
+      "id": "ziroh-build-next-2026",
+      "title": "ZIROH Build Next 2026",
+      "url": "https://www.ziroh.com/hackathon",
+      "providerAddress": "0x4D3c59d1673B0D1786ff28893d397b044fE889bb",
+      "signatureValid": true,
+      "hardChecks": {
+        "status": "PASS",
+        "checks": [
+          {
+            "label": "Provider signature identifies this job and result",
+            "pass": true
+          },
+          {
+            "label": "Official HTTPS source fetched independently",
+            "pass": true
+          },
+          {
+            "label": "Result identity is unique in this job",
+            "pass": true
+          },
+          {
+            "label": "Official prize pool is at least ₹1 lakh",
+            "pass": true
+          },
+          {
+            "label": "Official deadline remains open",
+            "pass": true
+          },
+          {
+            "label": "India-based student/builder eligibility verified",
+            "pass": true
+          },
+          {
+            "label": "AI builder relevance verified",
+            "pass": true
+          }
+        ],
+        "citations": [
+          {
+            "claim": "₹7,50,000 prize pool",
+            "source": "https://www.ziroh.com/hackathon",
+            "excerpt": "r a 30-day AI Challenge, starting from 26th October and compete for a ₹7,50,000 prize pool. ONLINE FREE TEAM SIZE: 1-5 Download Brochure About the Kompact AI Hackathon The Build Next 2026, powered by Kompact AI is a national-level AI Challenge for students and working professionals in Indi"
+          },
+          {
+            "claim": "Submission open until 15 October 2026",
+            "source": "https://www.ziroh.com/hackathon",
+            "excerpt": "roject Submission The entry project submission link will be open till 15th October, 2026. Top 20 Finalist teams will be announced on our social media pages by 20th October, 2026. PHASE 2 Build Next 2026 The top 20 finalist teams will compete for the prize. 26th October is the tentative eve"
+          },
+          {
+            "claim": "Students and working professionals in India may apply",
+            "source": "https://www.ziroh.com/hackathon",
+            "excerpt": " Kompact AI Hackathon The Build Next 2026, powered by Kompact AI is a national-level AI Challenge for students and working professionals in India. Hosted by ZIROH LABS, this AI competition challenges you to build Next-Gen AI Applications that have real-world impact Build with the Kompact A"
+          }
+        ],
+        "reason": "Official organizer page verifies prize pool, open deadline, India eligibility, and AI relevance."
+      },
+      "independentEvidence": {
+        "sources": [
+          {
+            "url": "https://www.ziroh.com/hackathon",
+            "provider": "Direct official page fetch",
+            "retrievedAt": "2026-09-27T06:29:34.201Z",
+            "pageSha256": "397576e7e6872813e7809d47fccfae7ccb8c9d417b3dbe6970d02e87f6cb3200",
+            "claims": [
+              {
+                "claim": "₹7,50,000 prize pool",
+                "excerpt": "r a 30-day AI Challenge, starting from 26th October and compete for a ₹7,50,000 prize pool. ONLINE FREE TEAM SIZE: 1-5 Download Brochure About the Kompact AI Hackathon The Build Next 2026, powered by Kompact AI is a national-level AI Challenge for students and working professionals in Indi"
+              },
+              {
+                "claim": "Submission open until 15 October 2026",
+                "excerpt": "roject Submission The entry project submission link will be open till 15th October, 2026. Top 20 Finalist teams will be announced on our social media pages by 20th October, 2026. PHASE 2 Build Next 2026 The top 20 finalist teams will compete for the prize. 26th October is the tentative eve"
+              },
+              {
+                "claim": "Students and working professionals in India may apply",
+                "excerpt": " Kompact AI Hackathon The Build Next 2026, powered by Kompact AI is a national-level AI Challenge for students and working professionals in India. Hosted by ZIROH LABS, this AI competition challenges you to build Next-Gen AI Applications that have real-world impact Build with the Kompact A"
+              }
+            ]
+          }
+        ]
+      },
+      "aiJudgment": {
+        "decision": "ACCEPT",
+        "confidence": 0.95,
+        "evidence": [
+          {
+            "claim": "₹7,50,000 prize pool",
+            "source": "https://www.ziroh.com/hackathon",
+            "supports": true
+          },
+          {
+            "claim": "Submission open until 15 October 2026",
+            "source": "https://www.ziroh.com/hackathon",
+            "supports": true
+          },
+          {
+            "claim": "Students and working professionals in India may apply",
+            "source": "https://www.ziroh.com/hackathon",
+            "supports": true
+          }
+        ],
+        "reason": "Official organizer page verifies prize pool, open deadline, India eligibility, and AI relevance.",
+        "model": "openai/gpt-oss-20b",
+        "evaluatedAt": "2026-09-27T06:29:35.344Z"
+      },
+      "decision": "ACCEPT",
+      "reason": "Official organizer page verifies prize pool, open deadline, India eligibility, and AI relevance.",
+      "payment": {
+        "status": "CONFIRMED ARC TESTNET USDC",
+        "amount": "0.10",
+        "txHash": "0xc43b20352f0c118efbaaa975bb10abe0b07b0ef8634f1bbe9d77ea4f49d24a7d",
+        "recipient": "0x4D3c59d1673B0D1786ff28893d397b044fE889bb",
+        "balanceBefore": "0.02",
+        "blockNumber": 64227150,
+        "balanceAfter": "0.12",
+        "explorerUrl": "https://explorer.testnet.arc.io/tx/0xc43b20352f0c118efbaaa975bb10abe0b07b0ef8634f1bbe9d77ea4f49d24a7d"
+      },
+      "receiptHash": "0xb27fef8cfcf88c3628e1ea0f41f265730419e9c8319fc17f7ef5532ec8fb0398"
+    },
+    {
+      "id": "ethonline-2026",
+      "title": "ETHOnline 2026",
+      "url": "https://ethglobal.com/events/ethonline2026",
+      "providerAddress": "0x4D3c59d1673B0D1786ff28893d397b044fE889bb",
+      "signatureValid": true,
+      "hardChecks": {
+        "status": "REJECT",
+        "checks": [
+          {
+            "label": "Provider signature identifies this job and result",
+            "pass": true
+          },
+          {
+            "label": "Official HTTPS source fetched independently",
+            "pass": true
+          },
+          {
+            "label": "Result identity is unique in this job",
+            "pass": true
+          },
+          {
+            "label": "Submission deadline still open",
+            "pass": false
+          }
+        ],
+        "citations": [
+          {
+            "claim": "ETHOnline ran 4–16 September 2026",
+            "source": "https://ethglobal.com/events/ethonline2026",
+            "excerpt": "ents ETHConf New Plus Showcase Faucet Swag About Login ETHOnline 2026 September 4 – 16, 2026 Async hackathon Interested in partnering? Reach out to us Come build our decentralized future ETHGlobal hackathons enable you to experiment with cutting edge web3 technologies and develop an idea y"
+          }
+        ],
+        "reason": "Official event dates ended before this evaluation; expired opportunities cannot be paid."
+      },
+      "independentEvidence": {
+        "sources": [
+          {
+            "url": "https://ethglobal.com/events/ethonline2026",
+            "provider": "Direct official page fetch",
+            "retrievedAt": "2026-09-27T06:29:36.683Z",
+            "pageSha256": "6dce7b39145d3804cc4687776f53ac675c655822715ca0fb1bc2ac7a5de1a681",
+            "claims": [
+              {
+                "claim": "ETHOnline ran 4–16 September 2026",
+                "excerpt": "ents ETHConf New Plus Showcase Faucet Swag About Login ETHOnline 2026 September 4 – 16, 2026 Async hackathon Interested in partnering? Reach out to us Come build our decentralized future ETHGlobal hackathons enable you to experiment with cutting edge web3 technologies and develop an idea y"
+              }
+            ]
+          }
+        ]
+      },
+      "aiJudgment": {
+        "decision": "REJECT",
+        "confidence": 0.95,
+        "evidence": [
+          {
+            "claim": "ETHOnline ran 4–16 September 2026",
+            "source": "https://ethglobal.com/events/ethonline2026",
+            "supports": false
+          }
+        ],
+        "reason": "Official event dates ended before this evaluation; expired opportunities cannot be paid.",
+        "model": "openai/gpt-oss-20b",
+        "evaluatedAt": "2026-09-27T06:29:37.705Z"
+      },
+      "decision": "REJECT",
+      "reason": "Official event dates ended before this evaluation; expired opportunities cannot be paid.",
+      "payment": {
+        "status": "NO PAYMENT",
+        "amount": "0.00",
+        "txHash": null,
+        "recipient": null
+      },
+      "receiptHash": "0xf5c6b6ec0a7dcf60dc51918143794163047813f323d6c833d9f3e804cafc957b"
+    },
+    {
+      "id": "algorand-x402-challenge-2026",
+      "title": "Algorand Global x402 Challenge",
+      "url": "https://algorand.co/global-x402-challenge",
+      "secondaryUrl": "https://luma.com/building-on-x402",
+      "providerAddress": "0x4D3c59d1673B0D1786ff28893d397b044fE889bb",
+      "signatureValid": true,
+      "hardChecks": {
+        "status": "REJECT",
+        "checks": [
+          {
+            "label": "Provider signature identifies this job and result",
+            "pass": true
+          },
+          {
+            "label": "Official HTTPS source fetched independently",
+            "pass": true
+          },
+          {
+            "label": "Result identity is unique in this job",
+            "pass": true
+          },
+          {
+            "label": "Prize pool exceeds ₹1 lakh",
+            "pass": true
+          },
+          {
+            "label": "New entrant registration remains open under official rules",
+            "pass": false
+          }
+        ],
+        "citations": [
+          {
+            "claim": "Program registration ended 1 September 2026",
+            "excerpt": "Program Registration Window : The registration phase commences at 11:45 pm Eastern Standard Time on June 12, 2026, and concludes at 11:45 pm on September 1, 2026",
+            "source": "https://algorand.co/hubfs/Hackathon%20Terms%20and%20conditions/x402%20competition%20Official%20Rules_Sep3rd26_.pdf"
+          },
+          {
+            "claim": "Registration form disabled after that deadline",
+            "excerpt": "After 11:45 p.m. Eastern Standard Time on September 1, 2026, the registration form will be disabled.",
+            "source": "https://algorand.co/hubfs/Hackathon%20Terms%20and%20conditions/x402%20competition%20Official%20Rules_Sep3rd26_.pdf"
+          },
+          {
+            "claim": "Later project information is for already registered entrants",
+            "excerpt": "Following registration for the Program, Entrants are required to submit additional project information to be considered for the Final Presentation, those interested in participating must fill out the registration form and submit the requested information before 11:45 pm Eastern Standard Time on September 29, 2026",
+            "source": "https://algorand.co/hubfs/Hackathon%20Terms%20and%20conditions/x402%20competition%20Official%20Rules_Sep3rd26_.pdf"
+          },
+          {
+            "claim": "Project submission window runs through 30 September",
+            "excerpt": "UPDATE SEPT 15, 2026: The submission window is open now through September 30th",
+            "source": "https://algorand.co/blog/the-x402-global-challenge-is-live-how-to-build-submit-your-entry"
+          }
+        ],
+        "reason": "Official rules closed new entrant registration on 1 September. The later submission window is for already registered entrants."
+      },
+      "independentEvidence": {
+        "sources": [
+          {
+            "url": "https://algorand.co/hubfs/Hackathon%20Terms%20and%20conditions/x402%20competition%20Official%20Rules_Sep3rd26_.pdf",
+            "provider": "Direct official rules PDF fetch and local PDF text extraction",
+            "retrievedAt": "2026-09-27T06:38:56.885Z",
+            "pageSha256": "adfb84d4783606bbe4031354ecd52fd929c138f02b933ea184f2e06396762199",
+            "claims": [
+              {
+                "claim": "Program registration ended 1 September 2026",
+                "excerpt": "Program Registration Window : The registration phase commences at 11:45 pm Eastern Standard Time on June 12, 2026, and concludes at 11:45 pm on September 1, 2026"
+              },
+              {
+                "claim": "Registration form disabled after that deadline",
+                "excerpt": "After 11:45 p.m. Eastern Standard Time on September 1, 2026, the registration form will be disabled."
+              },
+              {
+                "claim": "Later project information is for already registered entrants",
+                "excerpt": "Following registration for the Program, Entrants are required to submit additional project information to be considered for the Final Presentation, those interested in participating must fill out the registration form and submit the requested information before 11:45 pm Eastern Standard Time on September 29, 2026"
+              }
+            ]
+          },
+          {
+            "url": "https://algorand.co/blog/the-x402-global-challenge-is-live-how-to-build-submit-your-entry",
+            "provider": "Direct organizer blog fetch",
+            "retrievedAt": "2026-09-27T06:38:56.885Z",
+            "pageSha256": "c41acc712a554aa77eaf10721776ff560c8cbf1792b072052f1383079ab83523",
+            "claims": [
+              {
+                "claim": "Project submission window runs through 30 September",
+                "excerpt": "UPDATE SEPT 15, 2026: The submission window is open now through September 30th"
+              }
+            ]
+          }
+        ]
+      },
+      "aiJudgment": {
+        "decision": "REJECT",
+        "confidence": 0.95,
+        "evidence": [
+          {
+            "claim": "Program registration ended 1 September 2026",
+            "source": "https://algorand.co/hubfs/Hackathon%20Terms%20and%20conditions/x402%20competition%20Official%20Rules_Sep3rd26_.pdf",
+            "supports": true
+          },
+          {
+            "claim": "Registration form disabled after that deadline",
+            "source": "https://algorand.co/hubfs/Hackathon%20Terms%20and%20conditions/x402%20competition%20Official%20Rules_Sep3rd26_.pdf",
+            "supports": true
+          },
+          {
+            "claim": "Later project information is for already registered entrants",
+            "source": "https://algorand.co/hubfs/Hackathon%20Terms%20and%20conditions/x402%20competition%20Official%20Rules_Sep3rd26_.pdf",
+            "supports": true
+          },
+          {
+            "claim": "Project submission window runs through 30 September",
+            "source": "https://algorand.co/blog/the-x402-global-challenge-is-live-how-to-build-submit-your-entry",
+            "supports": true
+          }
+        ],
+        "reason": "Official rules closed new entrant registration on 1 September. The later submission window is for already registered entrants.",
+        "model": "openai/gpt-oss-20b",
+        "evaluatedAt": "2026-09-27T06:39:03.808Z"
+      },
+      "decision": "REJECT",
+      "reason": "Official rules closed new entrant registration on 1 September. The later submission window is for already registered entrants.",
+      "payment": {
+        "status": "NO PAYMENT",
+        "amount": "0.00",
+        "txHash": null,
+        "recipient": null
+      },
+      "receiptHash": "0x95ccc98cb4f102e7aafb57966b5b723f7b4f091ab48558a0a18ac73cfc9d761a",
+      "audit": [
+        {
+          "at": "2026-09-27T06:38:56.885Z",
+          "priorDecision": "ESCALATE",
+          "priorReason": "Eligibility uncertain due to conflicting dates; new entrants closed before the submission deadline, so confirmation is needed.",
+          "priorReceiptHash": "0x9a1aeb2a4eff56f92fcdc0091e40ecd0f1d5c81ee01f64476e04e1a3f9640c34",
+          "correction": "Official PDF rules separate closed new-entrant registration from later project submission."
+        }
+      ]
+    }
+  ],
+  "verifiedAt": "2026-09-27T15:41:17.616Z",
+  "correctedAt": "2026-09-27T06:39:03.821Z"
+}

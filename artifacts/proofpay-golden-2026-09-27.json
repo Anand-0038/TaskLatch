@@ -1,0 +1,14 @@
+{
+  "milestone": "ProofPay role-separated Arc Testnet golden path",
+  "date": "2026-09-27",
+  "network": { "name": "Arc Testnet", "chainId": 5042002, "rpc": "https://rpc.testnet.arc.io", "token": "0x3600000000000000000000000000000000000000", "tokenDecimals": 6 },
+  "roles": { "buyer": "0x59ff…d165", "provider": "0x4D3c…89bb", "agent": "0xFB76…D915", "distinct": true },
+  "legacy": { "status": "LEGACY_TEST; untouched", "escrow": "0xf03C76…988AF93f", "historicalPayoutTx": "0xef5fea5b84bc2ee1434a0e811762e6362db2c76271e890649ed3a705911cd8f7", "remainingEscrowUsdc": "0.08", "refundAvailableAfterUtc": "2026-10-10T18:28:24Z", "refundableDuringRun": false },
+  "freshDeployment": { "escrow": "0x056612…8eF040", "transaction": "0xdd42143d071669a2d3a5cad4dd7cd403935b446af8bae8f201e10b694d5400dc", "block": 64209597, "receiptStatus": 1 },
+  "job": { "id": "proofpay-golden-20260927-01", "unitPriceUsdc": "0.02", "maxUnits": 5, "capUsdc": "0.10", "fundingTransaction": "0xa479ef8e2d09bcdeddc73ecb4a1370a2b571718162021801532629d4b1c32b57", "fundingBlock": 64209714, "expiryUtc": "2026-10-11T04:02:19Z" },
+  "result": { "id": "7520fa1f-2d58-47c0-99ad-6cf1b19ddea8", "company": "LeadSimple", "sourceUrl": "https://www.leadsimple.com/about", "evaluation": "eligible by deterministic policy; submitted fields and hostname checked, page content not independently fetched", "payoutTransaction": "0x4870ab44fbff769e319f0a739f01d796376b884ca55296db78499ae94279efc8", "payoutBlock": 64209893, "receiptStatus": 1, "providerBalanceBeforeUsdc": "0.00", "providerBalanceAfterUsdc": "0.02", "providerBalanceDeltaUsdc": "0.02", "escrowAfterUsdc": "0.08", "onchainAcceptedCount": 1 },
+  "duplicateReplay": { "httpStatus": 409, "reason": "duplicate company domain", "onchainAcceptedCountAfter": 1, "providerBalanceAfterUsdc": "0.02", "secondPayoutSent": false },
+  "restart": { "serverRestarted": true, "realResultsRestored": 1, "receiptsRestored": 1, "readOnlyReconciliationPending": 0, "receiptTransactionStillMatches": true },
+  "checks": { "npmRunBuild": "passed", "npmRunContractCompile": "passed", "npmRunContractTest": "passed: 6/6", "syntaxChecks": "passed", "duplicateReplay": "passed", "restartPersistence": "passed" },
+  "scope": "Arc Testnet only; one capped job; no mainnet; no simulation product path; payment plumbing frozen"
+}

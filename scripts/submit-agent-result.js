@@ -1,0 +1,24 @@
+import { randomUUID } from 'node:crypto';
+import { Wallet } from 'ethers';
+import { submissionMessage } from '../server/agentic.js';
+import { resolveApiPort } from '../server/http-utils.js';
+
+const [company, rawDomain, evidenceHint = ''] = process.argv.slice(2);
+if (!company || !rawDomain) throw Error('Usage: npm run submit:agent -- "Company Name" company.com [optional public evidence hint]');
+const normalizedCompany = company.trim();
+if (!normalizedCompany || normalizedCompany.length > 100) throw Error('Company name must be 1 to 100 characters.');
+const privateKey = process.env.PROOFPAY_PROVIDER_PRIVATE_KEY;
+if (!privateKey) throw Error('PROOFPAY_PROVIDER_PRIVATE_KEY is not configured in the local env file.');
+const jobId = process.env.PROOFPAY_JOB_ID;
+if (!jobId) throw Error('PROOFPAY_JOB_ID is not configured.');
+const provider = new Wallet(privateKey);
+if (process.env.PROOFPAY_PROVIDER_ADDRESS && provider.address.toLowerCase() !== process.env.PROOFPAY_PROVIDER_ADDRESS.toLowerCase()) throw Error('Provider signing key does not match the configured provider address.');
+const domain = rawDomain.trim().toLowerCase().replace(/^https?:\/\//, '').replace(/\/$/, '');
+const nonce = randomUUID().replaceAll('-', '');
+if (domain.length > 253) throw Error('Company domain must be at most 253 characters.');
+const signature = await provider.signMessage(submissionMessage(jobId, normalizedCompany, domain, nonce));
+const url = `http://127.0.0.1:${resolveApiPort(process.env.API_PORT)}/api/v1/jobs/${encodeURIComponent(jobId)}/agent-results`;
+const response = await fetch(url, { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ company: normalizedCompany, domain, evidenceHint, providerAddress: provider.address, nonce, signature }), signal: AbortSignal.timeout(90_000) });
+const data = await response.json();
+if (!response.ok) throw Error(data.error || `ProofPay returned HTTP ${response.status}`);
+console.log(JSON.stringify({ resultId: data.data.id, company: data.data.company, domain: data.data.domain, decision: data.data.decision?.outcome || 'pending', reason: data.data.decision?.reason || null, x402: data.data.independentEvidence?.x402?.amount || null, settlementTx: data.data.decision?.payment?.txHash || null }, null, 2));

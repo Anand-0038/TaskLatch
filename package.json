@@ -1,0 +1,37 @@
+{
+  "name": "tasklatch-tameion-prototype",
+  "private": true,
+  "version": "0.1.0",
+  "license": "MIT",
+  "type": "module",
+  "engines": {
+    "node": "^20.19.0 || >=22.12.0"
+  },
+  "scripts": {
+    "dev": "concurrently -k \"node --env-file-if-exists=.env server/index.js\" \"vite --host 127.0.0.1\"",
+    "build": "vite build",
+    "contract:compile": "solcjs --bin contracts/ProofPayEscrow.sol -o .tmp-solc",
+    "test:contract": "node scripts/contract-tests.js",
+    "test:agentic": "node scripts/agentic-tests.js",
+    "test:opportunity": "node scripts/opportunity-service-tests.js",
+    "test:openapi": "node scripts/openapi-tests.js",
+    "test:http": "node scripts/http-utils-tests.js",
+    "test:arc-ui": "node scripts/arc-ui-state-tests.js",
+    "test:policy": "node scripts/acceptance-policy-tests.js",
+    "test:rpc-config": "node scripts/rpc-config-tests.js",
+    "submit:agent": "node --env-file=.env scripts/submit-agent-result.js",
+    "deploy:testnet": "node --env-file=.env scripts/deploy-testnet.js",
+    "start": "node --env-file-if-exists=.env server/index.js",
+    "fund:testnet": "node --env-file=.env scripts/fund-testnet.js"
+  },
+  "dependencies": {
+    "ethers": "^6.17.0"
+  },
+  "devDependencies": {
+    "@circle-fin/cli": "^1.1.4",
+    "concurrently": "^10.0.5",
+    "ganache": "^7.9.2",
+    "solc": "^0.8.37",
+    "vite": "^8.3.1"
+  }
+}

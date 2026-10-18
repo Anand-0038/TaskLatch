@@ -1,0 +1,323 @@
+[
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "token",
+        "type": "address"
+      }
+    ],
+    "stateMutability": "nonpayable",
+    "type": "constructor"
+  },
+  {
+    "inputs": [],
+    "name": "CapReached",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "DuplicateResult",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "Expired",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "InvalidJob",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "InvalidTerms",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "NotExpired",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "TransferFailed",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "Unauthorized",
+    "type": "error"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "bytes32",
+        "name": "jobId",
+        "type": "bytes32"
+      },
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "buyer",
+        "type": "address"
+      },
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "provider",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "unitPrice",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint32",
+        "name": "maxUnits",
+        "type": "uint32"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint64",
+        "name": "expiresAt",
+        "type": "uint64"
+      }
+    ],
+    "name": "JobOpened",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "bytes32",
+        "name": "jobId",
+        "type": "bytes32"
+      },
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "buyer",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "amount",
+        "type": "uint256"
+      }
+    ],
+    "name": "Refund",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "bytes32",
+        "name": "jobId",
+        "type": "bytes32"
+      },
+      {
+        "indexed": true,
+        "internalType": "bytes32",
+        "name": "resultId",
+        "type": "bytes32"
+      },
+      {
+        "indexed": false,
+        "internalType": "bool",
+        "name": "accepted",
+        "type": "bool"
+      },
+      {
+        "indexed": false,
+        "internalType": "bytes32",
+        "name": "evidenceHash",
+        "type": "bytes32"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "amount",
+        "type": "uint256"
+      }
+    ],
+    "name": "ResultResolved",
+    "type": "event"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "bytes32",
+        "name": "",
+        "type": "bytes32"
+      }
+    ],
+    "name": "jobs",
+    "outputs": [
+      {
+        "internalType": "address",
+        "name": "buyer",
+        "type": "address"
+      },
+      {
+        "internalType": "address",
+        "name": "provider",
+        "type": "address"
+      },
+      {
+        "internalType": "address",
+        "name": "agent",
+        "type": "address"
+      },
+      {
+        "internalType": "uint128",
+        "name": "unitPrice",
+        "type": "uint128"
+      },
+      {
+        "internalType": "uint32",
+        "name": "maxUnits",
+        "type": "uint32"
+      },
+      {
+        "internalType": "uint32",
+        "name": "accepted",
+        "type": "uint32"
+      },
+      {
+        "internalType": "uint64",
+        "name": "expiresAt",
+        "type": "uint64"
+      },
+      {
+        "internalType": "bool",
+        "name": "exists",
+        "type": "bool"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "bytes32",
+        "name": "id",
+        "type": "bytes32"
+      },
+      {
+        "internalType": "address",
+        "name": "provider",
+        "type": "address"
+      },
+      {
+        "internalType": "address",
+        "name": "agent",
+        "type": "address"
+      },
+      {
+        "internalType": "uint128",
+        "name": "unitPrice",
+        "type": "uint128"
+      },
+      {
+        "internalType": "uint32",
+        "name": "maxUnits",
+        "type": "uint32"
+      },
+      {
+        "internalType": "uint64",
+        "name": "expiresAt",
+        "type": "uint64"
+      }
+    ],
+    "name": "openJob",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "bytes32",
+        "name": "id",
+        "type": "bytes32"
+      }
+    ],
+    "name": "refundUnused",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "bytes32",
+        "name": "id",
+        "type": "bytes32"
+      },
+      {
+        "internalType": "bytes32",
+        "name": "resultId",
+        "type": "bytes32"
+      },
+      {
+        "internalType": "bool",
+        "name": "accepted",
+        "type": "bool"
+      },
+      {
+        "internalType": "bytes32",
+        "name": "evidenceHash",
+        "type": "bytes32"
+      }
+    ],
+    "name": "resolve",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "bytes32",
+        "name": "",
+        "type": "bytes32"
+      }
+    ],
+    "name": "resolved",
+    "outputs": [
+      {
+        "internalType": "bool",
+        "name": "",
+        "type": "bool"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "usdc",
+    "outputs": [
+      {
+        "internalType": "contract IERC20Minimal",
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  }
+]

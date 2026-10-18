@@ -1,0 +1,13 @@
+{
+  "updates": [
+    {
+      "resultId": "ziroh-build-next-2026",
+      "source": "https://www.ziroh.com/hackathon",
+      "checkedDate": "5 October 2026",
+      "method": "Manual check of the organizer page; separate from the saved ProofPay evaluation",
+      "currentDeadline": "16 October 2026",
+      "sourceText": "The entry project submission link will be open till 16th October, 2026. Deadline: 16th October, 2026.",
+      "effectOnHistoricalReceipt": "None. The saved decision and settlement remain tied to the official-page snapshot fetched on 27 September 2026."
+    }
+  ]
+}
