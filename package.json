@@ -8,8 +8,8 @@
     "node": "^20.19.0 || >=22.12.0"
   },
   "scripts": {
-    "dev": "concurrently -k \"node --env-file-if-exists=.env server/index.js\" \"vite --host 127.0.0.1\"",
-    "build": "vite build",
+    "dev": "node init && concurrently -k \"node --env-file-if-exists=.env server/index.js\" \"vite --host 127.0.0.1\"",
+    "build": "node init && vite build",
     "contract:compile": "solcjs --bin contracts/ProofPayEscrow.sol -o .tmp-solc",
     "test:contract": "node scripts/contract-tests.js",
     "test:agentic": "node scripts/agentic-tests.js",
@@ -21,7 +21,7 @@
     "test:rpc-config": "node scripts/rpc-config-tests.js",
     "submit:agent": "node --env-file=.env scripts/submit-agent-result.js",
     "deploy:testnet": "node --env-file=.env scripts/deploy-testnet.js",
-    "start": "node --env-file-if-exists=.env server/index.js",
+    "start": "node init && node --env-file-if-exists=.env server/index.js",
     "fund:testnet": "node --env-file=.env scripts/fund-testnet.js"
   },
   "dependencies": {
